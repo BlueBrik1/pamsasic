@@ -1,0 +1,49 @@
+PAMS Interval Checker local verification
+2026-11-26
+
+RTL simulation
+Icarus Verilog 12.0 and cocotb 2.1.0 passed all three tests.
+The compression test checked 12,480 transactions across all 3,120 code
+intervals for d=4, 5, 10, and 11. Each interval was tested at its first and
+last coefficient and at the adjacent coefficients outside the interval.
+The share split varied with a fixed seed.
+
+The first two tests also checked reset during division, deselection,
+ready/valid backpressure, status retention, and malformed share and
+ciphertext fields. See rtl-results.xml.
+
+Waveform
+gtkwave.png captures the RTL simulation in GTKWave. Open the original
+trace with gtkwave pams-demo.fst pams-demo.gtkw.
+The three results in order are MATCH, mismatch, and ERROR.
+
+GF180 physical build
+LibreLane 3.0.14 and the GF180MCU D PDK revision e8daeda73ca8f5814dbc0b11d1d05802251a3750
+produced a routed 346.64 by 160.72 micrometer tile. The standard-cell area
+was 20,957.6 square micrometers at 40.3% reported utilization.
+Worst setup and hold slack at the 100 ns clock period were +47.24 ns and
++0.48 ns, respectively. Detailed routing, Magic DRC, and LVS reported
+zero errors. OpenROAD reported up to 121 slew violations and one
+capacitance violation across the analyzed corners. See layout-metrics.csv.
+All 12 Tiny Tapeout precheck checks passed with KLayout 0.30.8 and the
+same PDK revision. See precheck-summary.md and precheck-results.xml.
+
+The powered gate-level netlist passed all three tests with the GF180
+simulation models, including 64 sampled boundary transactions and the
+handshake and malformed-packet checks. See gate-level-results.xml.
+
+gf180-layout.png and gf180-layout.svg were rendered from pams-gf180.gds
+with the Tiny Tapeout renderer. The LEF and powered Verilog are included
+for inspection and simulation.
+
+FPGA compile
+pams-fabricfox-v2.bin targets the Tiny Tapeout FabricFox v2 iCE40UP5K
+ASIC simulator breakout. Yosys, nextpnr and IceStorm generated it using
+the pin constraints from Tiny Tapeout support tools commit 21568ef.
+The routed design uses 260 of 5,280 logic cells and met its 12 MHz
+compile constraint. nextpnr estimated a 37.39 MHz maximum clock.
+Programming and testing a board remain pending.
+
+Repository documentation
+The Tiny Tapeout GF180 documentation check passed locally.
+GitHub-hosted workflows still need to run on the published repository.

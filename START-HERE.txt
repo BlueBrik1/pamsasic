@@ -1,0 +1,46 @@
+PAMS Interval Checker
+
+This folder contains a Tiny Tapeout GF180 prototype based on PAMS.
+Hack Club's program listing gives November 30, 2026 as the end date.
+
+https://asic.hackclub.com/submission
+https://hackclub.com/programs
+
+Repository and verification
+
+1. Check the public author value in info.yaml. The project files and
+   GitHub Actions workflows are at the repository root.
+2. Set GitHub Pages to GitHub Actions. Check the test, docs, and gds
+   workflows for the same commit. The local routed preview is in
+   evidence/gf180-layout.png. Confirm the hosted viewer shows the same
+   design. Run the fpga workflow if using the supported Tiny Tapeout
+   iCE40UP5K ASIC simulator.
+3. Review evidence/gtkwave.png and open the short trace with its GTKWave
+   save file. The trace shows the input handshake and the match, mismatch,
+   and malformed-packet results.
+4. Write and publish your own explanation on a public non-GitHub page.
+   Use the captured evidence to explain which edges accept bytes, why
+   READY drops, and how DONE, MATCH, and ERROR distinguish outcomes.
+   Record your own design decisions, debugging, and measurements.
+
+https://asic.hackclub.com/write-up
+
+Forms
+
+FPGA board
+Enter your GitHub username and repository URL, public write-up URL, short
+description, waveform and physical-layout screenshots, and actual design
+hours. The form also asks for contact, eligibility, and shipping details.
+The prototype's one-line description is in info.yaml.
+
+https://forms.hackclub.com/asic-fpga
+
+Shared chip
+Run the documented vectors on the actual FPGA. Capture a logic-analyzer
+trace and add your hardware results to your public write-up. The form
+asks for the updated URL, repository, screenshots, and additional hours
+spent testing on hardware. Count those hours separately from design time.
+The compiled bitstream in evidence targets only the FabricFox v2 variant
+of the Tiny Tapeout ASIC simulator. Verify your board before programming.
+
+https://forms.hackclub.com/asic-chip

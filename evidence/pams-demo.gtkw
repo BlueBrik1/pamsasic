@@ -1,0 +1,28 @@
+[*] PAMS Interval Checker
+[size] 1450 780
+[timestart] 0
+*-26.0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+@28
+tb.clk
+tb.rst_n
+tb.valid
+tb.ready
+@22
+tb.ui_in[7:0]
+@28
+tb.done
+tb.match
+tb.error
+@200
+-RTL datapath
+@24
+tb.user_project.state[2:0]
+tb.user_project.byte_index[2:0]
+tb.user_project.bits_left[3:0]
+tb.user_project.remainder[11:0]
+tb.user_project.quotient[13:0]
+tb.user_project.switched_sum[13:0]
+tb.user_project.boundary[13:0]
+@28
+tb.user_project.upper_endpoint
+tb.user_project.above_lower
